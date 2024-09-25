@@ -13,17 +13,15 @@
    - **基本定义**：Solidity 中使用 `struct` 关键字定义结构体，可以将多种数据类型组合在一起形成自定义的复合数据类型。
    - **示例**：
 
-   ```
-   ```
+```solidity
 
 struct CustomType {
 bool myBool;
 uint myInt;
 }
-
 ```
-	- **复杂类型**：结构体的成员不仅限于基本类型，还可以是数组、映射、甚至其他结构体。
-	```
+- **复杂类型**：结构体的成员不仅限于基本类型，还可以是数组、映射、甚至其他结构体。
+```solidity
 struct CustomType2 {
     CustomType[] cts;
     mapping(string => CustomType) indexs;
@@ -38,8 +36,7 @@ struct CustomType3 {
 2. **结构体的限制**
    - **不能包含自身类型作为成员**：结构体不能直接包含其自身类型作为成员，但可以通过映射来间接包含。
 
-   ```
-   ```
+```solidity
 
 struct CustomType2 {
 CustomType[] cts;
@@ -50,15 +47,12 @@ mapping(string => CustomType2) indexs;
 
 3. **结构体的声明与初始化**
 	- **仅声明变量**：在声明结构体变量时，可以不进行初始化，此时Solidity会使用默认值为结构体成员赋值。
-	```
+```solidity
 CustomType ct1;  // 使用默认值初始化
 ```
 
-```
 - **按成员顺序初始化**：可以按照结构体成员声明的顺序进行初始化。此方法在状态变量和函数内均可使用，但要注意成员类型和数量的匹配。
-```
-```
-
+```solidity
 // 状态变量初始化
 CustomType ct1 = CustomType(true, 2);
 
@@ -66,25 +60,21 @@ CustomType ct1 = CustomType(true, 2);
 CustomType memory ct2 = CustomType(true, 2);
 
 ```
-	- **具名方式初始化**：这种方式不需要按照成员顺序，可以自由选择初始化的顺序，但必须忽略`mapping`类型的成员。
-	```
+- **具名方式初始化**：这种方式不需要按照成员顺序，可以自由选择初始化的顺序，但必须忽略`mapping`类型的成员。
+```solidity
 CustomType memory ct = CustomType({ myBool: true, myInt: 2 });
 ```
 
-```
 - **复杂结构体的初始化**：对于包含`mapping`的结构体，只能对非`mapping`成员进行初始化。
-```
-```
-
+```solidity
 CustomType3 memory ct = CustomType3("tiny", 2);
-
 ```
 
 4. **结构体的常见应用场景**
 	- **用户信息管理**：可以使用结构体存储用户的详细信息，如姓名、年龄、得分等。
 	- **订单管理**：在电商合约中，结构体可以用于存储订单的详细信息，如订单ID、产品列表、总价等。
 	- **示例**：使用结构体管理用户信息
-	```
+```solidity
 struct User {
     string name;
     uint age;
