@@ -105,11 +105,11 @@ contract AddTest {
 
 - `using for` 语法允许将库的函数绑定到特定的数据类型，使得库函数可以直接作用于该数据类型的变量，简化函数调用。
 
-1. **示例：使用 ****using for**** 绑定类型**
+**示例：使用 ** **using for** **绑定类型**
 
 - 通过 `using for` 语法将 `SafeMath` 库函数绑定到 `uint` 类型：
 
-```java
+```solidity
 contract TestLib {
     using SafeMath for uint;
     function add(uint x, uint y) public pure returns (uint) {
@@ -118,11 +118,9 @@ contract TestLib {
 }
 ```
 
--
+#### **3.** **using for** **语法**
 
-#### **3. ****using for ***** 语法**
-
-- `using for *` 语法可以将库函数绑定到任意类型，类似于为任意类型扩展新的方法。
+- `using for` 语法可以将库函数绑定到任意类型，类似于为任意类型扩展新的方法。
 - **示例：为数组添加****indexOf****函数**
 
 ```solidity
@@ -164,6 +162,6 @@ contract C {
 2. **链接库的使用**：
 
    - 修改 `MathLib` 的乘法函数为外部函数，然后编写一个合约 `CalcTest` 使用链接库，并通过库地址调用乘法函数。
-3. **using for****的使用**：
+3. **using for** **的使用**：
 
    - 编写一个库，提供对数组的扩展功能（如 `contains` 函数检查数组是否包含某个元素），并在合约中使用 `using for` 语法扩展数组类型。

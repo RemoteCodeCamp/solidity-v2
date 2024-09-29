@@ -18,7 +18,7 @@
 - 接口（Interface）与抽象合约相似，但接口**不实现**任何函数。
 - 接口主要用于标准化不同合约之间的交互，它定义了合约之间的行为协议。
 
-1. **接口的限制**
+2. **接口的限制**
 
 Solidity 中的接口具有以下限制：
 
@@ -43,7 +43,7 @@ interface IToken {
 
 - **抽象合约**可以包含部分已实现的函数，但接口**不实现任何函数**。
 - 抽象合约可以定义构造函数、状态变量、结构体和枚举，而接口不可以。
-- 接口中的所有函数都**隐式地标记为****virtual**，这意味着它们需要在实现合约中被重写。
+- 接口中的所有函数都**隐式地标记为** **virtual**，这意味着它们需要在实现合约中被重写。
 
 ---
 
@@ -55,7 +55,7 @@ interface IToken {
 
 - **示例代码：定义并实现接口**
 
-```typescript
+```solidity
 // 定义一个接口 IToken
 interface IToken {
     function transfer(address recipient, uint256 amount) external;
@@ -75,13 +75,13 @@ contract SimpleToken is IToken {
 }
 ```
 
-1. **合约之间通过接口进行通信**
+2. **合约之间通过接口进行通信**
 
 接口的一个重要用途是实现合约间的通信。一个合约可以通过接口与另一个合约交互，而无需知道具体的实现细节。
 
 - **示例代码：使用接口进行合约通信**
 
-```typescript
+```solidity
 contract Award {
     IToken immutable token;
     // 构造函数中传入 SimpleToken 合约的地址
@@ -107,7 +107,7 @@ contract Award {
 
 - **ERC20 接口的示例代码**：
 
-```typescript
+```solidity
 interface IERC20 {
     function totalSupply() external view returns (uint256);
     function balanceOf(address account) external view returns (uint256);
