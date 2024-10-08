@@ -20,37 +20,37 @@ Solidity 提供了一些全局变量来获取当前区块链状态的信息，�
 
 - **blockhash(uint blockNumber) returns (bytes32)**：返回指定区块的哈希值，`blockNumber` 仅支持最近的 256 个区块，且不包括当前区块。
 
-```java
+```solidity
 bytes32 hash = block.blockhash(100);
 ```
 
 - **block.coinbase (address)**：返回挖出当前区块的矿工地址。
 
-```java
+```solidity
 address miner = block.coinbase;
 ```
 
 - **block.difficulty (uint)**：返回当前区块的难度。
 
-```java
+```solidity
 uint difficulty = block.difficulty;
 ```
 
 - **block.gaslimit (uint)**：返回当前区块的 Gas 上限。
 
-```java
+```solidity
 uint gasLimit = block.gaslimit;
 ```
 
 - **block.number (uint)**：返回当前区块号。
 
-```java
+```solidity
 uint blockNumber = block.number;
 ```
 
 - **block.timestamp (uint)**：返回当前区块的时间戳（单位：秒）。常用于时间条件判断。
 
-```java
+```solidity
 uint timestamp = block.timestamp;
 ```
 
@@ -58,43 +58,43 @@ uint timestamp = block.timestamp;
 
 - **gasleft() returns (uint256)**：返回当前合约执行剩余的 Gas 数量。
 
-```java
+```solidity
 uint remainingGas = gasleft();
 ```
 
 - **msg.data (bytes)**：返回当前调用的完整 `calldata`。
 
-```java
+```solidity
 bytes memory data = msg.data;
 ```
 
 - **msg.sender (address)**：返回当前调用的发送者地址。
 
-```java
+```solidity
 address sender = msg.sender;
 ```
 
 - **msg.sig (bytes4)**：返回当前调用的函数选择器。
 
-```java
+```solidity
 bytes4 functionSelector = msg.sig;
 ```
 
 - **msg.value (uint)**：返回此次调用发送的以太币数量（单位：wei）。
 
-```java
+```solidity
 uint sentValue = msg.value;
 ```
 
 - **tx.gasprice (uint)**：返回当前交易的 Gas 价格。
 
-```java
+```solidity
 uint gasPrice = tx.gasprice;
 ```
 
 - **tx.origin (address payable)**：返回交易的最初发起者地址。如果只有一个调用，`tx.origin` 与 `msg.sender` 相同；否则，`tx.origin` 始终是最初的交易发起者。
 
-```java
+```solidity
 address origin = tx.origin;
 ```
 
@@ -108,19 +108,19 @@ ABI（应用二进制接口）函数用于编码和解码 Solidity 中的数据�
 
 - **abi.encode(...) returns (bytes)**：对输入的参数进行 ABI 编码，返回字节数组。
 
-```java
+```solidity
 bytes memory encodedData = abi.encode(uint(1), address(0x123));
 ```
 
 - **abi.encodePacked(...) returns (bytes)**：将多个参数进行紧密打包编码，不填充到 32 字节。适用于哈希计算。
 
-```java
+```solidity
 bytes memory packedData = abi.encodePacked(uint(1), address(0x123));
 ```
 
 - **abi.encodeWithSelector(bytes4 selector, ...) returns (bytes)**：将参数编码，并在前面加上函数选择器（用于外部调用）。
 
-```java
+```solidity
 bytes4 selector = bytes4(keccak256("transfer(address,uint256)")); 
 
 bytes memory encodedWithSelector = abi.encodeWithSelector(selector, address(0x123), 100);
@@ -128,7 +128,7 @@ bytes memory encodedWithSelector = abi.encodeWithSelector(selector, address(0x12
 
 - **abi.encodeWithSignature(string signature, ...) returns (bytes)**：通过函数签名生成函数选择器，并将参数编码。
 
-```java
+```solidity
 bytes memory encodedWithSignature = abi.encodeWithSignature("transfer(address,uint256)", address(0x123), 100);
 ```
 
@@ -136,7 +136,7 @@ bytes memory encodedWithSignature = abi.encodeWithSignature("transfer(address,ui
 
 - **abi.decode(bytes memory encodedData, (...)) returns (...)**：对编码的数据进行解码，返回解码后的参数。
 
-```java
+```solidity
 (uint a, address b) = abi.decode(encodedData, (uint, address));
 ```
 
@@ -150,13 +150,13 @@ Solidity 提供了一些常用的数学与密码学函数，用于处理复杂�
 
 - **addmod(uint x, uint y, uint k) returns (uint)**：计算 `(x + y) % k`，在任意精度下执行加法再取模，支持大数运算。
 
-```java
+```solidity
 uint result = addmod(10, 20, 7); // 结果为 2
 ```
 
 - **mulmod(uint x, uint y, uint k) returns (uint)**：计算 `(x * y) % k`，先进行乘法再取模。
 
-```java
+```solidity
 uint result = mulmod(10, 20, 7); // 结果为 6
 ```
 
@@ -164,19 +164,19 @@ uint result = mulmod(10, 20, 7); // 结果为 6
 
 - **keccak256(bytes memory) returns (bytes32)**：使用 Keccak-256 算法计算哈希值（以太坊的主要哈希算法）。
 
-```java
+```solidity
 bytes32 hash = keccak256(abi.encodePacked("Hello, World!"));
 ```
 
 - **sha256(bytes memory) returns (bytes32)**：计算 SHA-256 哈希值。
 
-```java
+```solidity
 bytes32 hash = sha256(abi.encodePacked("Hello, World!"));
 ```
 
 - **ripemd160(bytes memory) returns (bytes20)**：计算 RIPEMD-160 哈希值，生成较短的 20 字节哈希值。
 
-```java
+```solidity
 bytes20 hash = ripemd160(abi.encodePacked("Hello, World!"));
 ```
 
@@ -184,7 +184,7 @@ bytes20 hash = ripemd160(abi.encodePacked("Hello, World!"));
 
 - **ecrecover(bytes32 hash, uint8 v, bytes32 r, bytes32 s) returns (address)**：通过椭圆曲线签名恢复公钥对应的地址，常用于验证签名。
 
-```java
+```solidity
 address signer = ecrecover(hash, v, r, s);
 ```
 
@@ -208,7 +208,7 @@ address signer = ecrecover(hash, v, r, s);
 
 - 下面的代码示例演示了如何使用时间单位创建一个定时锁定合约，只有在锁定时间之后才能解锁代币：
 
-```java
+```solidity
 solidity pragma solidity ^0.8.0;
 contract TimeLock { 
 uint public unlockTime; 
@@ -247,7 +247,7 @@ function withdraw() public {
 
 高级示例：使用时间单位设计多阶段锁定合约：
 
-```
+```solidity
 pragma solidity ^0.8.0;
 contract MultiStageTimeLock { 
     uint public stage1UnlockTime; 
@@ -279,7 +279,7 @@ function withdrawStage2() public {
 
 示例：每天限制一次执行的合约
 
-```
+```solidity
 pragma solidity ^0.8.0;
 contract DailyAction {
 

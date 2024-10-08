@@ -25,7 +25,7 @@ OpenZeppelin 是以太坊生态中一个非常了不起的项目，OpenZeppelin 
 
 本教程使用的 OpenZeppelin 是 2.3.0 版本，随着版本的升级，内容可能有所变化，OpenZeppelin 使用起来很简单，通过 import 关键字引入对应的代码即可，以下代码为智能合约加入所有权功能。
 
-```
+```solidity
 pragma solidity ^0.5.0; 
 import "@openzeppelin/contracts/ownership/Ownable.sol"; 
 contract MyContract is Ownable { ... }

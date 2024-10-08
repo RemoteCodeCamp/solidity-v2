@@ -58,7 +58,7 @@ count()的 Keccak 的 hash 结果是： `06661abdecfcab6f8e8cf2e41182a05dfd130c7
 
 通常，在合约中调用 Counter 合约的 count() 函数的形式是：Counter.count() ，在上一章，介绍过底层调用 call 函数，因此也可以直接通过 call 函数和 ABI 编码来调用 count()函数：
 
-```
+```solidity
 (bool success, bytes memory returnData) = address(c).call("0x06661abd"); // c 为 Counter 合约地址，0x06661abd
 require(success);
 ```

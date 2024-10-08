@@ -10,7 +10,7 @@ Solidity 支持三种类型的变量：状态变量（变量值永久保存在�
 
 如果一个变量是状态变量，那么它的值将永久保存在合约存储空间中。下面的合约首先声明了一个状态变量 storedData，随后在构造函数中给其赋值。
 
-```
+```solidity
 pragma solidity ^0.5.0; 
 contract SolidityTest { 
 uint storedData; // 状态变量 
@@ -24,7 +24,7 @@ storedData = 10; // 使用状态变量
 
 局部变量是仅限于在函数执行过程中有效的变量，函数执行完毕后，变量就不再受任何影响。函数参数也是局部变量。下述案例中可以看到，函数内部的变量被认为是局部变量。
 
-```
+```solidity
 pragma solidity ^0.5.0; 
 contract SolidityTest { 
 uint storedData; // 状态变量 
