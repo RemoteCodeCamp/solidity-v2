@@ -193,8 +193,7 @@ myToken.transferFromOwner(msg.sender, recipient, 100 * 10 ** 18);
      - 创建一个 MyToken，4 位小数，代币符号为 "MT"，代币总量 1,000,000,000
      - **代码实例**：
 
-     ```typescript
-     ```
+```solidity
 
 pragma solidity ^0.5.0;
 import "@openzeppelin/contracts/ERC20Detailed.sol";
@@ -206,11 +205,10 @@ _mint(msg.sender, 1000000000 * 10 ** 4);
 }
 }
 
-```
-		- 
-	- **WETH 实现**
-		- 基于 ERC20 实现 ETH 和 ERC20 双向转换
-		- **WETH 代币的实现**：通过 `deposit()` 和 `withdraw()` 处理 ETH 和 WETH 的互换
+``` 
+- **WETH 实现**
+	- 基于 ERC20 实现 ETH 和 ERC20 双向转换
+	- **WETH 代币的实现**：通过 `deposit()` 和 `withdraw()` 处理 ETH 和 WETH 的互换
 
 3. **实际应用场景**
 	- **去中心化交易所（DEX）中的使用**
@@ -289,4 +287,3 @@ _mint(msg.sender, 1000000000 * 10 ** 4);
 
 - **回答**：ERC20 最大的问题之一是授权问题，即用户授权第三方代币花费额度后，第三方可能会在任何时间消耗授权的代币。这个问题可以通过实现 ERC777 或者增加 `permit()` 机制（如 ERC2612 标准）来部分解决。`permit()` 使用签名进行授权，而不依赖于 `approve()` 函数。
 
-```
